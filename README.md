@@ -1,24 +1,21 @@
-## Play
-You can play the game at http://cards-against-humanity.surge.sh.
+## Juego
+¡Bienvenido a Cartas contra la Humanidad! ¡Ahora por fin en español! O castellano. Bueno, ya tu sabe.
 
-## Built With (Major Only)
-- React
-- Material UI
-- [Dave's Fullstack System](https://github.com/imdaveead/fullstack-system/)
-- Docsify (Documentation)
-- Node.JS (Server)
+// TODO: Incluir URL de producción
+Puedes jugarlo en !!!URL!!!.
 
-### Server
-The server was written in **Node.JS** along with **Socket.IO** and the code is at https://hparcells.github.io/cards-against-humanity/. The server primary action is to store the game data along with distribute it to the players when it is updated, while the client does minor logic before sending the action to the server.
+***
 
-## Motivation
-The motovation for this project came from an idea to create some sort of card or board game within React, and I though a card game would be easier that a board game. This was also during the time when I was learning React and wanted to make a larger project then I ever have done before.
+// TODO: Incluir GIFS explicativos
 
-Development time took around two and a half weeks, way shorter than I though it would take, given that I was gone on a trip during that time as well.
+## Desarrollo
 
-## Future Roadmap
-- [ ] Desktop App via **Electon**
+Cartas contra la Humanidad está construido usando React, Node.Js, Socket.IO, Material UI, Docsify y otras tecnologías chulas. Y está basado en el [gran trabajo](https://github.com/hparcells/cards-against-humanity) de [Hunter Parcells(https://github.com/hparcells) y [Dave](https://github.com/imdaveead).
 
-## Credits
-- Hunter Parcells (Me): Almost the whole game.
-- [Dave](https://github.com/imdaveead): Implementing animations for the cards.
+Para probarlo en local, basta con instalar _npm_ y usar _npm install_ y _npm start_. El juego se debería desplegar en el puerto 8000 del localhost.
+
+***
+
+## Créditos
+- [Mario Varona](https://github.com/mvarona)
+- [Sergio Ferreras](https://github.com/SergioPucela)
