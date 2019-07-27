@@ -119,26 +119,26 @@ class Game extends Component {
                   username === game.players[0].username
                     ? <form className={classes.formRoot} autoComplete='off'>
                       <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor='age-helper'>Timeout Time</InputLabel>
+                        <InputLabel htmlFor='age-helper'>Tiempo de espera</InputLabel>
                         <Select
                           value={this.state.timeoutTime}
                           onChange={this.handleTimeoutTimeChange}
                           input={<Input name='timeoutTime' id='timeout-time' />}
                         >
-                          <MenuItem value={30}>30 Seconds</MenuItem>
-                          <MenuItem value={60}>60 Seconds</MenuItem>
-                          <MenuItem value={120}>120 Seconds</MenuItem>
+                          <MenuItem value={30}>30 segundos</MenuItem>
+                          <MenuItem value={60}>60 segundos</MenuItem>
+                          <MenuItem value={120}>120 segundos</MenuItem>
                         </Select>
-                        <FormHelperText>How long should each player's turn take before a card gets automatically played.</FormHelperText>
+                        <FormHelperText>Cuánto debería durar el turno de cada jugador antes de que una carta se juegue automáticamente.</FormHelperText>
                       </FormControl>
                     </form>
                     : null
                 }
 
-                <Typography variant='h4' style={{ marginTop: '20px' }}>Select Decks to Use</Typography>
+                <Typography variant='h4' style={{ marginTop: '20px' }}>Selecciona barajas a usar</Typography>
                 <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Toggle All</Button>
 
-                <Typography variant='h5'>Official</Typography>
+                <Typography variant='h5'>Oficial</Typography>
                 <FormGroup row>
                   {
                     decks.filter((deck) => deck.official).map((deck, index) => {
@@ -165,9 +165,9 @@ class Game extends Component {
                     })
                   }
                 </FormGroup>
-                <Typography variant='h5'>Unofficial</Typography>
-                <Typography paragraph>[A] cards represent those decks found on <a href='https://crhallberg.com/cah/' target='_blank' rel='noreferrer noopener'>JSON Against Humanity</a>,
-                  and [B] cards are the deck myself or friends have made.
+                <Typography variant='h5'>No oficiales</Typography>
+                <Typography paragraph>A) barajas encontradas en <a href='https://crhallberg.com/cah/' target='_blank' rel='noreferrer noopener'>JSON Against Humanity</a>,
+                  y B) barajas hechas por hparcells o sus amigos.
                 </Typography>
                 <FormGroup row>
                   {
@@ -195,10 +195,10 @@ class Game extends Component {
                     })
                   }
                 </FormGroup>
-                <Typography variant='h5'>Custom</Typography>
-                <Typography paragraph>Import your own JSON files to play with cards YOU want!</Typography>
+                <Typography variant='h5'>Personalizadas</Typography>
+                <Typography paragraph>¡Importa tus propios archivos JSON para jugar con las cartas que TÚ quieres!</Typography>
                 <FormGroup row>
-                  <Button variant='outlined' color='primary' className={classes.button} disabled={clientIndex !== 0} onClick={this.openDialog}>Import JSON</Button>
+                  <Button variant='outlined' color='primary' className={classes.button} disabled={clientIndex !== 0} onClick={this.openDialog}>Importar JSON</Button>
                   {
                     decks.filter((deck) => deck.custom).map((deck, index) => {
                       const codeName = deck.codeName;
@@ -225,7 +225,7 @@ class Game extends Component {
                   }
                 </FormGroup>
 
-                <Typography variant='h4' style={{ marginTop: '20px' }} onClick={this.openDialog}>Connected Players</Typography>
+                <Typography variant='h4' style={{ marginTop: '20px' }} onClick={this.openDialog}>Jugadores conectados</Typography>
                 <ul>
                   {
                     game.players.map((player, index) => {
@@ -233,7 +233,7 @@ class Game extends Component {
                         <li key={index}>
                           <Typography>{
                             player.username === username
-                              ? <strong>{player.username} (You)</strong>
+                              ? <strong>{player.username} (Tú)</strong>
                               : player.username
                           }</Typography>
                         </li>
@@ -274,7 +274,7 @@ class Game extends Component {
                     <List>
                       <ListItem button onClick={kill}>
                         <ListItemIcon><WarningIcon /></ListItemIcon>
-                        <ListItemText primary='Kill Game' />
+                        <ListItemText primary='Matar juego' />
                       </ListItem>
                     </List>
                   </div>
@@ -292,18 +292,18 @@ class Game extends Component {
           aria-labelledby='alert-dialog-slide-title'
           aria-describedby='alert-dialog-slide-description'
         >
-          <DialogTitle id='alert-dialog-slide-title'>Choose a JSON File...</DialogTitle>
+          <DialogTitle id='alert-dialog-slide-title'>Escoge un archivo JSON...</DialogTitle>
           <DialogContent>
             <DialogContentText id='alert-dialog-slide-description'>
-              Submit a JSON file using the file input below.
+              Envia un archivo JSON usando el botón inferior.
             </DialogContentText>
 
             <input id='jsonFileSelect' type='file' accept='.json' onChange={this.chooseFile} />
-            <Typography paragraph style={{ marginTop: '20px' }}>Don't know how to make a deck? Check out the <a href='https://hparcells.github.io/cards-against-humanity/#/' target='_blank' rel='noreferrer noopener'>documentation</a>!</Typography>
+            <Typography paragraph style={{ marginTop: '20px' }}>¿Quieres saber cómo hacer una baraja? Échale un vistazo a <a href='https://github.com/mvarona/CartasContraLaHumanidad/#/' target='_blank' rel='noreferrer noopener'>la documentación</a></Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.closeAndSubmitFile} color='primary'>
-              Done
+              Hecho
             </Button>
           </DialogActions>
         </Dialog>

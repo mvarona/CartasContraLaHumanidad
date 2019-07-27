@@ -30,32 +30,48 @@ class Start extends Component {
 
     return (
       <div id='connect-area'>
-        <h1>Cards Against Humanity</h1>
-        <Typography paragraph>Welcome to Cards Against Humanity! If you have never heard of it, it is basically where each round, one player asks a question from a Black Card, and everyone else answers with
-          their funniest White Card. Things can get pretty R rated. This game functions the best on a computer instead of a mobile device.
+        <h1>Cartas contra la Humanidad</h1>
+        <Typography paragraph>¡Bienvenido a Cartas contra la Humanidad! Si nunca lo has oído, es un juego en el que un jugador hace una pregunta de una Carta Negra, y todo el mundo responde con sus mejores Cartas Blancas. ¡Cuánto más raro, más risas!
         </Typography>
         <Paper className={classes.paperRoot} elevation={1}>
           <Typography variant='h5' component='h3'>
-            Connect
+            Crea tu sala o únete a la de tus amigos
           </Typography>
           <TextField
             id='username'
-            label='Username'
+            label='Nombre de usuario'
             className={classes.textField}
             value={this.props.username}
             onChange={this.props.handleUsernameChange}
             margin='normal'
             variant='outlined'
           />
+          <br/>
+          <TextField
+            id='code'
+            label='Código de la sala'
+            className={classes.textField}
+            value={this.props.code}
+            onChange={this.props.handleCodeChange}
+            margin='normal'
+            variant='outlined'
+          />
           <Button variant='outlined' color='primary' className={classes.button} onClick={this.props.connect}>
-            Connect
+            Unirse a sala existente
+          </Button>
+          <br/>
+          –––––––––– o ––––––––––
+          <br/>
+          <Button variant='outlined' color='primary' className={classes.button} onClick={this.props.create}>
+            Crear nueva sala
           </Button>
         </Paper>
         <Paper className={classes.paperRoot}>
-          <Typography variant='h5'>Publishing You Card Packs</Typography>
-          <Typography paragraph>Want to get your custom pack in the game? I am always welome to add pack contributions to the game. Read the documentation
-            at <a href='https://cards-against-humanity.netlify.com/#/custom-decks' target='_blank' rel='noreferrer noopener'>https://cards-against-humanity.netlify.com/#/custom-decks</a> and open a GitHub issue
-            at <a href='https://github.com/hparcells/cards-against-humanity/issues' target='_blank' rel='noreferrer noopener'>https://github.com/hparcells/cards-against-humanity/issues</a>.</Typography>
+          <Typography variant='h5'>Publica tus mazos de cartas</Typography>
+          <br/>
+          <Typography paragraph>¿Quieres que tu mazo personalizado esté en el juego? ¡Las contribuciones son bienvenidas!
+          <br/>
+          Lee la documentación en <a href='https://cards-against-humanity.netlify.com/#/custom-decks' target='_blank' rel='noreferrer noopener'>https://cards-against-humanity.netlify.com/#/custom-decks</a>, abre un issue de Github en <a href='https://github.com/mvarona/CartasContraLaHumanidad/issues' target='_blank' rel='noreferrer noopener'>https://github.com/mvarona/CartasContraLaHumanidad/issues</a> y lo revisaremos.</Typography>
         </Paper>
       </div>
     );

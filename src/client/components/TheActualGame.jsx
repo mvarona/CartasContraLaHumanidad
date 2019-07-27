@@ -64,10 +64,10 @@ class TheActualGame extends Component {
             isCzar
               ? game.gameState.czarReady
                 ? <Grid className='card white-card' item xs={1}>
-                  <Paper className={classes.paper} style={{ marginBottom: '10px' }}>Everyone has played. Pick the best white card(s).</Paper>
+                  <Paper className={classes.paper} style={{ marginBottom: '10px' }}>Todos han jugado. Elije la(s) mejor(es) carta(s) blanca(s).</Paper>
                 </Grid>
                 : <Grid className='card white-card' item xs={1}>
-                  <Paper className={classes.paper}>You are the Czar... wait for everyone to play.</Paper>
+                  <Paper className={classes.paper}>Eres el árbitro... Espera a que todos jueguen.</Paper>
                 </Grid>
               : hasPlayedCard
                 ? !game.gameState.czarReady
@@ -79,11 +79,11 @@ class TheActualGame extends Component {
                     );
                   })
                   : <Grid className='card white-card' item xs={1}>
-                    <Paper className={classes.paper} style={{ marginBottom: '10px' }}>Wait for the Czar to pick the best white card(s).</Paper>
+                    <Paper className={classes.paper} style={{ marginBottom: '10px' }}>Espera a que el árbitro escoja la(s) mejor(es) carta(s) blanca(s).</Paper>
                   </Grid>
                 : <Grid className='card white-card' item xs={1}>
                   <Paper className={classes.paper}>
-                    Click on a card to play it.
+                    Haz click en una carta para jugarla.
                     <br /><br />
                     {game.gameState.turnTimeLeft}
                   </Paper>
@@ -126,14 +126,14 @@ class TheActualGame extends Component {
 
         <ExpansionPanel style={{ marginTop: '20px', maxWidth: '500px' }}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>Scores</Typography>
+            <Typography className={classes.heading}>Puntos</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Player</TableCell>
-                  <TableCell>Awesome Points (10 to Win)</TableCell>
+                  <TableCell>Jugador</TableCell>
+                  <TableCell>Puntos Increíbles (10 para ganar)</TableCell>
                 </TableRow>
               </TableHead>
 

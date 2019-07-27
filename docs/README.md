@@ -1,8 +1,10 @@
-# Cards Against Humanity Documentation
-> Cards Against Humanity built in React.
+# Documentación de Cartas contra la Humanidad
+> Juego hecho con React, NodeJS y otras tecnologías geniales.
 
-## Play
-You can play the game at https://cah-game.herokuapp.com/.
+// TODO: URL!!
 
-## You Are Probably Here Because...
-You are probably here to see how to write custom decks. It's pretty simple, so get started on the [Writing Custom Decks](custom-decks.md) page.
+## Jugar
+Puedes jugar al juego en https://cah-game.herokuapp.com/.
+
+## Seguramentes estás aquí porque...
+¿Quieres hacer tus propios mazos? Es fácil, échale un vistazo a esto: [Escribiendo tus propios mazos](custom-decks.md).

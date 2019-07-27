@@ -1,7 +1,7 @@
 {
-  "name": "cards-against-humanity",
+  "name": "cartas-contra-la-humanidad",
   "version": "1.6.1",
-  "description": "Another Cards Against Humanity clone built in React.",
+  "description": "Cartas contra la Humanidad, por fin en español y usando React.",
   "private": true,
   "scripts": {
     "start": "fullstack-system dev",

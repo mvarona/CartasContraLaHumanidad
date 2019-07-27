@@ -104,8 +104,8 @@ class App extends Component {
       this.setState({
         dialog: {
           open: true,
-          title: 'Invalid Username',
-          content: 'Your username was invalid. Your username must not be blank and has to be at most 16 characters.'
+          title: 'Nombre de usuario inválido',
+          content: 'El nombre de usuario es inválido. El nombre de usuario no puede estar vacío y no puede pasar de los 16 caracteres.'
         }
       });
       
@@ -119,8 +119,8 @@ class App extends Component {
       this.setState({
         dialog: {
           open: true,
-          title: 'Could Not Connect',
-          content: 'The client took too long to connect to the server. The server may be down. Try again later.'
+          title: 'Error al conectar',
+          content: 'El cliente tarda demasiado en conectar con el servidor, puede que esté caído. Por favor, inténtalo de nuevo más tarde.'
         }
       });
       
@@ -137,8 +137,8 @@ class App extends Component {
       this.setState({
         dialog: {
           open: true,
-          title: 'Username Exists in Game',
-          content: 'There is another person inside the game with the same username. Try again with another username or wait.'
+          title: 'El nombre de usuario ya existe en la sala',
+          content: 'Hay otro jugador en la sala con el mismo nombre de usuario. Por favor, inténtalo de nuevo con otro usuario o espera a que termine su partida.'
         }
       });
       playSound('dialog');
@@ -147,7 +147,7 @@ class App extends Component {
       this.setState({
         dialog: {
           open: true,
-          title: 'Bad JSON',
+          title: 'JSON malformado',
           content: content
         }
       });
@@ -185,7 +185,7 @@ class App extends Component {
     socket.on('roundWinner', (username) => {
       this.setState({
         snackbarOpen: true,
-        snackbarContent: `${username} won the round. Next round in three seconds.`
+        snackbarContent: `${username} gana la ronda. Siguiente ronda en 3 segundos...`
       });
       playSound('round-winner');
     });
@@ -207,8 +207,8 @@ class App extends Component {
       this.setState({
         dialog: {
           open: true,
-          title: 'Not Enough Players',
-          content: 'There were not enough players to continue the game, therefore the game was closed.'
+          title: 'No hay suficientes jugadores',
+          content: 'Por este motivo, el juego se ha cerrado.'
         }
       });
       socket.disconnect();
@@ -227,8 +227,8 @@ class App extends Component {
         this.setState({
           dialog: {
             open: true,
-            title: 'Server Disconnect',
-            content: 'You have been disconnected from the game. This can be because the game was concluded, server is offline, or that the has stopped working.'
+            title: 'Servidor desconectado',
+            content: 'Has sido desconectado del juego. Esto se puede deber a que el juego terminó, el servidor está caído o ha dejado de funcionar.'
           }
         });
 
@@ -338,7 +338,7 @@ class App extends Component {
           <AppBar position='static' color='primary'>
             <Toolbar>
               <Typography variant='h6' color='inherit' className={classes.grow}>
-                Cards Against Humanity
+                Cartas contra la Humanidad
               </Typography>
 
               <Typography variant='h6' color='inherit'>{this.state.connected ? this.state.username : null}</Typography>
@@ -408,11 +408,11 @@ class App extends Component {
             TransitionComponent={Transition}
           >
             <AppBar className={classes.appBar}>
-              <IconButton color='inherit' onClick={this.closeEndGameDialog} aria-label='Close'>
+              <IconButton color='inherit' onClick={this.closeEndGameDialog} aria-label='Cerrar'>
                 <CloseIcon />
               </IconButton>
             </AppBar>
-            <Typography variant='h4' style={{ textAlign: 'center', marginTop: '10px' }}>Game Summrary</Typography>
+            <Typography variant='h4' style={{ textAlign: 'center', marginTop: '10px' }}>Resumen del juego</Typography>
             <List>
               <Button variant='outlined' onClick={() => {
                 const blob = new Blob([ this.state.log.join('\n') ], { type: 'text/plain', endings: 'native' });
@@ -433,15 +433,15 @@ class App extends Component {
                 Download Log (.txt)
               </Button>
               <ListItem>
-                <ListItemText primary='Winner' secondary={this.state.winner} />
+                <ListItemText primary='Ganador' secondary={this.state.winner} />
               </ListItem>
               <Divider />
               <ListItem>
-                <ListItemText primary='Your Score' secondary={this.state.clientScore} />
+                <ListItemText primary='Tu puntuación' secondary={this.state.clientScore} />
               </ListItem>
               <Divider />
               <ListItem>
-                <ListItemText primary='Game Log' secondary={<Interweave content={this.state.log.join('<br />')}/>} />
+                <ListItemText primary='Log de la partida' secondary={<Interweave content={this.state.log.join('<br />')}/>} />
               </ListItem>
             </List>
           </Dialog>
