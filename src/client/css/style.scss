@@ -8,6 +8,27 @@ body {
   padding: 0px;
 }
 
+@keyframes opacityOnAndOff {
+    0% {
+        opacity: 0;
+    }
+    25%{
+      opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#copied {
+    animation-name: opacityOnAndOff;
+    animation-duration: 6000ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    margin-left: 20px;
+    font-size: .8em;
+}
+
 .card {
   min-width: 150px;
   overflow-wrap: break-word;

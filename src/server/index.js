@@ -4,6 +4,8 @@ import fs from 'fs';
 import entities from 'entities';
 import { randomOf } from '@reverse/random';
 
+let games = [];
+
 let game = {
   code: generateCode(16),
   players: [],
@@ -25,6 +27,14 @@ let game = {
 };
 
 let timeLeftInterval;
+
+function returnGameForCode(code){
+  for (var i = 0; i < games.length; i++) {
+    if (games[i].code == code){
+      return games[i];
+    }
+  }
+}
 
 function addDecks(addBlackCards, addWhiteCards) {
   const defaultDecksToUse = game.decks.filter((deck) => deck.selected && !deck.custom).map((deck) => {

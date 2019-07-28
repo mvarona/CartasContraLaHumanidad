@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
+import CopyIcon from '@material-ui/icons/FileCopy';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
@@ -64,7 +65,17 @@ class Game extends Component {
       timeoutTime: 60
     };
   }
-
+  copyCode = (code) => () => {
+    var tempInput = document.createElement("input");
+    tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+    tempInput.value = code;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    var copied = document.getElementById('copied');
+    copied.style = "display: inline";
+  }
   toggleAdminPanel = (open) => () => {
     this.setState({ adminPanelOpen: open });
   }
@@ -115,6 +126,17 @@ class Game extends Component {
                     : <Button variant='contained' color='primary' disabled className={classes.button} style={{ marginTop: '35px' }}>Empezar ({game.players.length} de 2 jugadores)</Button>
                 }
 
+                <Typography variant='h4' style={{ marginTop: '20px' }}>Código de la sala: {game.code}&nbsp;&nbsp;&nbsp;
+                  <Fab color='primary' aria-label='Copy' onClick={this.copyCode(game.code)}>
+                    <CopyIcon />
+                  </Fab>
+                  <span id="copied" style={{ display: 'none'}}>¡Copiado!</span>
+                </Typography>
+
+                <FormHelperText>Facilita este código con los amigos con los que quieras jugar.</FormHelperText>
+                
+                <br/><br/>
+
                 {
                   username === game.players[0].username
                     ? <form className={classes.formRoot} autoComplete='off'>
@@ -138,7 +160,9 @@ class Game extends Component {
                 <Typography variant='h4' style={{ marginTop: '20px' }}>Selecciona barajas a usar</Typography>
                 <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Alternar todas</Button>
 
+                <br/><br/>
                 <Typography variant='h5'>Oficiales</Typography>
+                <br/>
                 <FormGroup row>
                   {
                     decks.filter((deck) => deck.official).map((deck, index) => {
@@ -165,7 +189,9 @@ class Game extends Component {
                     })
                   }
                 </FormGroup>
+                <br/><br/>
                 <Typography variant='h5'>No oficiales</Typography>
+                <br/>
                 <Typography paragraph>A) barajas encontradas en <a href='https://crhallberg.com/cah/' target='_blank' rel='noreferrer noopener'>JSON Against Humanity</a>,
                   y B) barajas hechas por el equipo de desarrollo original, sus amigos o equipos de desarrollo posteriores.
                 </Typography>
@@ -195,7 +221,9 @@ class Game extends Component {
                     })
                   }
                 </FormGroup>
+                <br/><br/>
                 <Typography variant='h5'>Personalizadas</Typography>
+                <br/>
                 <Typography paragraph>¡Importa tus propios archivos JSON para jugar con las cartas que TÚ quieres!</Typography>
                 <FormGroup row>
                   <Button variant='outlined' color='primary' className={classes.button} disabled={clientIndex !== 0} onClick={this.openDialog}>Importar JSON</Button>
