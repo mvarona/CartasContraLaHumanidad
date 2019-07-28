@@ -1,8 +1,17 @@
 # Changelog
-All notable changes to this project will be documented in this file.
+Todos los cambios destacables de este proyecto serán documentados en este archivo.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+y este proyecto usa [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## 2.0.0 [yyyy/mm/dd]
+## Added
+- API completamente nueva.
+
+## Removed
+- API de herencia dada de baja.
+
+## LEGACY CHANGELOG:
 
 ## 1.6.1 [06/26/2019]
 ### Fixes

@@ -1,35 +1,35 @@
 # API
-> Get data with the REST API.
+> Consigue datos con la API REST.
 
 
-## Table of Contents
+## Tabla de Contenidos
 - [API](#API)
-  - [Table of Contents](#Table-of-Contents)
+  - [Tabla de Contenidos](#Table-of-Contents)
   - [URL](#URL)
   - [Endpoints](#Endpoints)
-    - [/currentGame](#currentGame)
+    - [/currentGame/:code](#currentGame)
     - [/sets](#sets)
     - [/set/:set](#setset)
     - [randomWhiteCard/:set?](#randomWhiteCardset)
     - [randomBlackCard/:set?](#randomBlackCardset)
 
 ## URL
-You can access the API through: `https://cah-game.herokuapp.com/api/`.
+Puedes acceder a la API desde: `https://cah-game.herokuapp.com/api/`.
 
 ## Endpoints
-### /currentGame
-Gets the current game object of the running game.
+### /currentGame/:code
+Devuelve el objeto de la partida actual con el código especificado por el parámetro `code`.
 
 ### /sets
-Lists all the valid set IDs available.
+Muestra todos los IDs disponibles.
 
 ### /set/:set
-Gets the data of a specified set. The `set` parameter has to be a valid set ID. Set IDs can be found through `/sets`.
+Devuelve los datos de un set específico. El parámetro `set` tiene que ser un ID válido. Los IDs de sets pueden ser encontrados en `/sets`.
 
 ### randomWhiteCard/:set?
-Gets a random white card from a set. If so `set` parameter is provided, it grabs a random white card from the default deck. Set IDs can be found through `/sets`.
+Devuelve una carta blanca aleatoria de un set. Si el parámetro `set` es proporcionado, se coge una carta blanca aleatoria de la baraja predeterminada. Los IDs de los sets pueden ser encontrados en `/sets`.
 
 ### randomBlackCard/:set?
-Gets a random black card from a set. If so `set` parameter is provided, it grabs a random black card from the default deck. Set IDs can be found through `/sets`.
+Devuelve una carta negra aleatoria de un set. Si el parámetro `set` es proporcionado, se coge una carta negra aleatoria de la baraja predeterminada. Los IDs de los sets pueden ser encontrados en `/sets`.
 
-This only returns the text of the black card. It does not include how many white cards must be chosen.
+Esto sólo devuelve el texto de la carta negra. No incluye cuántas cartas blancas deben ser escogidas.

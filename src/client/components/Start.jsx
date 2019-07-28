@@ -67,9 +67,9 @@ class Start extends Component {
           </Button>
         </Paper>
         <Paper className={classes.paperRoot}>
-          <Typography variant='h5'>Publica tus mazos de cartas</Typography>
+          <Typography variant='h5'>Publica tus barajas de cartas</Typography>
           <br/>
-          <Typography paragraph>¿Quieres que tu mazo personalizado esté en el juego? ¡Las contribuciones son bienvenidas!
+          <Typography paragraph>¿Quieres que tu baraja personalizada esté en el juego? ¡Las contribuciones son bienvenidas!
           <br/>
           Lee la documentación en <a href='https://cards-against-humanity.netlify.com/#/custom-decks' target='_blank' rel='noreferrer noopener'>https://cards-against-humanity.netlify.com/#/custom-decks</a>, abre un issue de Github en <a href='https://github.com/mvarona/CartasContraLaHumanidad/issues' target='_blank' rel='noreferrer noopener'>https://github.com/mvarona/CartasContraLaHumanidad/issues</a> y lo revisaremos.</Typography>
         </Paper>

@@ -397,7 +397,7 @@ class App extends Component {
             </DialogContent>
             <DialogActions>
               <Button onClick={this.closeDialog} color='primary'>
-                Ok
+                Aceptar
               </Button>
             </DialogActions>
           </Dialog>
@@ -430,7 +430,7 @@ class App extends Component {
                   URL.revokeObjectURL(a.href);
                 }, 1500);
               }} style={{ marginLeft: '15px' }}>
-                Download Log (.txt)
+                Descargar log.txt
               </Button>
               <ListItem>
                 <ListItemText primary='Ganador' secondary={this.state.winner} />

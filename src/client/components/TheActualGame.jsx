@@ -146,10 +146,10 @@ class TheActualGame extends Component {
                           {
                             playerIndex === game.gameState.czar
                               ? player.username === username
-                                ? <strong>{player.username} (Czar) (You)</strong>
+                                ? <strong>{player.username} (Árbitro) (Tú)</strong>
                                 : `${player.username} (Czar)`
                               : player.username === username
-                                ? <strong>{player.username} (You)</strong>
+                                ? <strong>{player.username} (Tú)</strong>
                                 : player.username
                           }
                         </TableCell>
@@ -166,7 +166,7 @@ class TheActualGame extends Component {
         </ExpansionPanel>
 
         <div id='hand'>
-          <Typography variant='h4' style={{ marginBottom: '10px' }}>Your Hand:</Typography>
+          <Typography variant='h4' style={{ marginBottom: '10px' }}>Tu mano:</Typography>
           <Grid container spacing={2}>
             <TransitionGroup component={React.Fragment}>
               {

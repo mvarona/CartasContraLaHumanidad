@@ -1,3 +1,3 @@
-* [Home](/)
-* [Writing Custom Decks](custom-decks.md)
+* [Inicio](/)
+* [Escribiendo barajas personalizadas](custom-decks.md)
 * [API](api.md)

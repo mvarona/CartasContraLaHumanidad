@@ -110,9 +110,9 @@ class Game extends Component {
                 {
                   game.players.length >= 4
                     ? username === game.players[0].username
-                      ? <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} onClick={start(this.state.timeoutTime)}>Start with {game.players.length} Players</Button>
-                      : <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} disabled onClick={start}>Start with {game.players.length} Players (Only the Host Can Start the Game)</Button>
-                    : <Button variant='contained' color='primary' disabled className={classes.button} style={{ marginTop: '35px' }}>Start ({game.players.length} of 4 Players)</Button>
+                      ? <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} onClick={start(this.state.timeoutTime)}>Empezar con {game.players.length} jugadores</Button>
+                      : <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} disabled onClick={start}>Empezar con {game.players.length} jugadores (Sólo el anfitrión puede empezar el juego)</Button>
+                    : <Button variant='contained' color='primary' disabled className={classes.button} style={{ marginTop: '35px' }}>Empezar ({game.players.length} de 2 jugadores)</Button>
                 }
 
                 {
@@ -136,9 +136,9 @@ class Game extends Component {
                 }
 
                 <Typography variant='h4' style={{ marginTop: '20px' }}>Selecciona barajas a usar</Typography>
-                <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Toggle All</Button>
+                <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Alternar todas</Button>
 
-                <Typography variant='h5'>Oficial</Typography>
+                <Typography variant='h5'>Oficiales</Typography>
                 <FormGroup row>
                   {
                     decks.filter((deck) => deck.official).map((deck, index) => {
@@ -167,7 +167,7 @@ class Game extends Component {
                 </FormGroup>
                 <Typography variant='h5'>No oficiales</Typography>
                 <Typography paragraph>A) barajas encontradas en <a href='https://crhallberg.com/cah/' target='_blank' rel='noreferrer noopener'>JSON Against Humanity</a>,
-                  y B) barajas hechas por hparcells o sus amigos.
+                  y B) barajas hechas por el equipo de desarrollo original, sus amigos o equipos de desarrollo posteriores.
                 </Typography>
                 <FormGroup row>
                   {
@@ -269,12 +269,12 @@ class Game extends Component {
                   <Typography variant='h4' style={{
                     textAlign: 'center',
                     marginTop: '20px'
-                  }}>Admin Panel</Typography>
+                  }}>Panel de Administración</Typography>
                   <div className={classes.list}>
                     <List>
                       <ListItem button onClick={kill}>
                         <ListItemIcon><WarningIcon /></ListItemIcon>
-                        <ListItemText primary='Matar juego' />
+                        <ListItemText primary='Terminar juego' />
                       </ListItem>
                     </List>
                   </div>

@@ -1,70 +1,72 @@
-# Writing Custom Decks
-> A way to play with cards you create.
+# Escribiendo barajas personalizadas
+> Juega con tus propias tarjetas.
 
-Custom decks are written in a JSON file and imported before the game begins. This page will show you how to create decks and what you need.
+Las barajas personalizadas están escritas en un archivo JSON importado antes de que empiece el juego. Esta página te mostrará cómo crear las barajas que quieras.
 
-## Getting Started
-First off, you need to create a JSON file with two keys. `name` and `codeName`.
+## Empecemos
+Lo primero que necesitas es crear un archivo JSON con dos claves: `name` y `codeName`.
 
-- `name` is a <u>string</u>, can be anything you want, and it will be what is shown in game.
-- `codeName` is also <u>string</u>, and is the name the game uses to identify your deck. This must be unique from every other deck. If it is not unique, the JSON will not import and will notify you.
+- `name` es una <u>cadena</u>, puede ser lo que quieras, y es como se mostrará en el juego.
+- `codeName` también es una <u>cadena</u>, y es el nombre que el juego usa para identificar tu baraja. Este tiene que ser único entre todas las barajas. Si no es único, el archivo no se importará y serás notificado.
 
-The bare-boned deck file should look like this:
+El esqueleto de la baraja quedaría así:
 ```json
 {
-  "name": "Custom Deck #1",
-  "codeName": "custom-deck-1"
+  "name": "Baraja Personalizada #1",
+  "codeName": "mi-baraja-1"
 }
 ```
 
-> [!WARNING]
-> If `name` and `codeName` are not present or are misspelled, the deck will not be added and you will be notified.
+> [!ADVERTENCIA]
+> Si `name` o `codeName` no figuran o están mal escritos, la baraja no será añadida y serás notificado.
 
-## Adding Cards
-### Black Cards
-Black cards are represented as objects in an array with the key of `blackCards`. Each black card object needs two keys, `text` and `pick`.
+## Añadiendo Cartas
+### Cartas Negras
+Las cartas negras se representan con la clave `blackCards`. Cada tarjeta negra necesita dos claves, `text` y `pick`.
 
-- The `text` key is a <u>string</u>, and the text that is shown in game on the card. You may use character entities which can be found at https://dev.w3.org/html5/html-author/charref. To add blanks to the card **only use one underscore**. You may also use HTML such as `<b>Bold</b>` and `Line 1<br />Line2`.
-- The `pick` key is a <u>number</u>, and represents how many cards each player must pick to fulfill the black card. There is no limit to what you can, but **it should be no more than ten cards** as each player has ten cards and doesn't draw more until the next round.
+- La clave `text` es una <u>cadena</u>, y es el texto que aparecerá en la tarjeta en el juego. Puedes usar las entidades de caracteres que encontrarás en https://dev.w3.org/html5/html-author/charref. Para añadir huecos a la tarjeta **usa sólo una barra baja (_)**. También puedes usar HTML como `<b>Negrita</b>` y `Saltos de<br />línea`.
+- La clave `pick` es un <u>número</u>, y representa cuántas tarjetas puede escoger cada jugador para rellenar la tarjeta negra. No hay límite en cuántas puedes elegir, pero **no debería ser más de diez cartas** ya que cada jugador tiene diez cartas y no se añaden más hasta la ronda siguiente.
 
-An example of adding black cards should look like this:
+Un ejemplo de añadir cartas negras quedaría así:
 ```json
 {
-  "name": "Custom Deck #1",
-  "codeName": "custom-deck-1",
+  "name": "Baraja Personalizada #1",
+  "codeName": "mi-baraja-1",
   "blackCards": [
     {
-      // Not using blanks.
-      "text": "Why did the chicken cross the road?",
+      // Sin usar huecos:
+      // TODO: Comprobar si sobran las entidades para tildes, ¿ y ¡:
+      "text": "&#191; Por qu&eacute; cruz&oacute; la gallina la carretera?",
       "pick": 1
     },
     {
-      // Using blanks and character entities.
-      "text": "You like _? Well _&trade; is better!",
+      // Usando huecos y entidades de caracteres:
+      "text": "&#191;Te gusta _? &#161;Bueno, _&trade; es mejor!",
       "pick": 2
     }
   ]
 }
 ```
 
-### White Cards
-Adding white cards are the easiest. You need to add an array with the key of `whiteCards`, and each array item will be a string.
+### Cartas Blancas
+Las cartas blancas son las más sencillas. Necesitas añadir un array con la clave `whiteCards`, y cada elemento del array debe ser una cadena.
 
-An example of adding white cards is:
+Un ejemplo de añadir tarjetas blancas sería:
+// TODO: Revisar si se puede poner tildes en las WhiteCards:
 ```json
 {
-  "name": "Custom Deck #1",
-  "codeName": "custom-deck-1",
+  "name": "Baraja Personalizada #1",
+  "codeName": "mi-baraja-1",
   "whiteCards": [
-    "Yes",
+    "Si",
     "No",
-    "Maybe"
+    "Puede"
   ]
 }
 ```
 
-> [!TIP]
-> Any cards that don't the same type (string, number, ...) will not be added to the game.
+> [!CONSEJO]
+> Cualquier tarjeta que no tenga los tipos que debe tener (cadena, número, ...) no será añadida al juego.
 
-> [!TIP]
-> Arrays `whiteCards` and `blackCards` are optional and don't need to be added for the deck to work.
+> [!CONSEJO]
+> Los arrays `whiteCards` y `blackCards` son opcionales y no son necesarios para que la baraja funcione.

@@ -130,33 +130,33 @@ function removePlayer(username) {
   // Remove player.
   game.players.splice(game.players.findIndex((x) => x.username === username), 1);
   io.sockets.emit('updatedGame', game);
-  console.log(`Player ${username} disconnected.`);
-  game.log.push(`Player ${username} disconnected.`);
+  console.log(`Jugador ${username} desconectado.`);
+  game.log.push(`Jugador ${username} desconectado.`);
 
   // If there is not enough people to join.
   let minNumberOfPlayers = 2;
 
   if(game.players.length < minNumberOfPlayers && game.started) {
-    console.log('Not enough players connected. Ending game.');
+    console.log('No hay suficientes jugadores conectados. Terminando juego.');
     io.sockets.emit('gameEndNotEnoughPlayers');
     resetGame();
     return;
   }
   if(game.players.length === 0) {
-    console.log('Room is empty. Resetting.');
+    console.log('La sala está vacía. Reseteando.');
     resetGame();
   }
 }
 
 io.on('connection', (socket) => {
   socket.on('newPlayer', (username) => {
-    console.log(`Player ${username} connected.`);
-    game.log.push(`Player ${username} connected.`);
+    console.log(`Jugador ${username} conectado.`);
+    game.log.push(`Jugador ${username} conectado.`);
 
     // Check if the username already exists.
     for(const player of game.players) {
       if(username === player.username) {
-        console.log(`Player ${username} tried to join, but username already exists.`);
+        console.log(`El jugador ${username} intentó unirse, pero el nombre de usuario ya existe.`);
         socket.emit('usernameExists');
         socket.disconnect();
         return;
@@ -212,7 +212,7 @@ io.on('connection', (socket) => {
     try {
       customDeckJSON = JSON.parse(deckFile.toString('UTF8'));
     }catch(err) {
-      io.sockets.emit('badCustomDeck', 'There was an error parsing the file. Make sure there is no trailing commas and try again.');
+      io.sockets.emit('badCustomDeck', 'Hubo un error leyendo el archivo. Por favor, asegúrate de que no hay comas sueltas e inténtalo de nuevo.');
       return;
     }
     
@@ -225,11 +225,11 @@ io.on('connection', (socket) => {
     // Check if the deck contains a name and a codeName.
     if(!hasNames) {
       if(!hasName && !hasCodeName) {
-        io.sockets.emit('badCustomDeck', 'Keys: name and codeName, were not found. Make sure you spelled the keys correctly and try again.');
+        io.sockets.emit('badCustomDeck', 'Las claves name y codeName no se han encontrado. Por favor, asegúrate de que están bien escritas e inténtalo de nuevo.');
       }else if(!hasName) {
-        io.sockets.emit('badCustomDeck', 'Key: name, was not found. Make sure you spelled the keys correctly and try again.');
+        io.sockets.emit('badCustomDeck', 'La clave name no se ha encontrado. Por favor, asegúrate de que están bien escritas e inténtalo de nuevo.');
       }else if(!hasCodeName) {
-        io.sockets.emit('badCustomDeck', 'Key: codeName, was not found. Make sure you spelled the keys correctly and try again.');
+        io.sockets.emit('badCustomDeck', 'La clave codeName no se ha encontrado. Por favor, asegúrate de que están bien escritas e inténtalo de nuevo.');
       }
       return;
     }
@@ -237,13 +237,13 @@ io.on('connection', (socket) => {
     // Check if the codename exists in another deck.
     game.decks.forEach((deck) => {
       if(deck.codeName === customDeckJSON.codeName) {
-        io.sockets.emit('badCustomDeck', 'The code name you used for your deck already exists in another deck. Change the code name and try again.');
+        io.sockets.emit('badCustomDeck', 'El código de nombre usado para tu baraja ya exite en otra baraja. Por favor, cambia el código de nombre e inténtalo de nuevo.');
         formattedCorrectly = false;
       }
     });
     game.customDecks.forEach((deck) => {
       if(deck.codeName === customDeckJSON.codeName) {
-        io.sockets.emit('badCustomDeck', 'The code name you used for your deck already exists in another deck. Change the code name and try again.');
+        io.sockets.emit('badCustomDeck', 'El código de nombre usado para tu baraja ya exite en otra baraja. Por favor, cambia el código de nombre e inténtalo de nuevo.');
         formattedCorrectly = false;
       }
     });
@@ -286,35 +286,35 @@ io.on('connection', (socket) => {
       }
     }
     game.customDecks.push(newCustomDeck);
-    game.log.push(`Custom Deck: ${customDeckJSON.name} added.`);
+    game.log.push(`Baraja personalizada: ${customDeckJSON.name} añadida.`);
 
     // Send new data.
     io.sockets.emit('updatedGame', game);
   });
   socket.on('start', (timeoutTime) => {
-    console.log(`Starting game with ${game.players.length} players.`);
+    console.log(`Empezando juego con ${game.players.length} jugadores.`);
     addDecks(true, true);
 
     // Deal cards.
     for(const player of game.players) {
-      game.log.push(`Player ${player.username} Drawing White Cards:`);
+      game.log.push(`El jugador ${player.username} roba las cartas blancas:`);
 
       for(let i = 0; i < 10; i++) {
-        game.log.push(`Player ${player.username} White Card #${i + 1}: ${game.gameState.whiteCards[0]}`);
+        game.log.push(`Jugador ${player.username} Carta Blanca #${i + 1}: ${game.gameState.whiteCards[0]}`);
         player.hand.push(game.gameState.whiteCards[0]);
         game.gameState.whiteCards.shift();
       }
     }
 
     // Chose black card.
-    game.log.push(`Black Card in Play: ${game.gameState.blackCards[0].text}`);
+    game.log.push(`Carta Negra en juego: ${game.gameState.blackCards[0].text}`);
     game.gameState.blackCard = game.gameState.blackCards[0];
     game.gameState.blackCards.shift();
     
 
     const decks = game.decks.filter((deck) => deck.selected).map((deck) => deck.name);
 
-    game.log.push(`Starting Game with Decks: ${decks.join(' ')}.`);
+    game.log.push(`Empezando juego con las barajas: ${decks.join(' ')}.`);
     
     game.started = true;
     io.sockets.emit('updatedGame', game);
@@ -323,7 +323,7 @@ io.on('connection', (socket) => {
     game.timeoutTime = timeoutTime;
     io.sockets.emit('roundStart', game.timeoutTime);
 
-    console.log('Game started.');
+    console.log('El juego ha empezado.');
   });
   socket.on('roundStart', (roundStartTime) => {
     const roundTime = game.timeoutTime;
@@ -367,7 +367,7 @@ io.on('connection', (socket) => {
     
     // Remove card from client hand.
     game.players[playerIndex].hand = game.players[playerIndex].hand.filter((value) => value !== cardString);
-    game.log.push(`Player ${username} Played White Card: ${cardString}`);
+    game.log.push(`El jugador ${username} jugó la Carta Blanca: ${cardString}`);
 
 
     let playedCards = 0;
@@ -386,7 +386,7 @@ io.on('connection', (socket) => {
   socket.on('czarPicked', (username) => {
     const playerIndex = getPlayerIndex(username);
     
-    game.log.push(`Player ${username} won the round!`);
+    game.log.push(`¡El jugador ${username} gana la ronda!`);
     
     // Increase the score by one.
     game.players[playerIndex].score++;
@@ -395,9 +395,9 @@ io.on('connection', (socket) => {
     // Check for winner.
     for(const player of game.players) {
       if(player.score === 10) {
-        game.log.push(`Player ${player.username} won the game!`);
+        game.log.push(`¡El jugador ${player.username} gana el juego!`);
         io.sockets.emit('winner', player.username, game.players, game.log);
-        console.log(`${player.username} won the game. Resetting.`);
+        console.log(`${player.username} ha ganado el juego. Reseteando.`);
         resetGame();
         return;
       }
@@ -411,12 +411,12 @@ io.on('connection', (socket) => {
         for(let cardsLeft = cardsToAdd; cardsLeft > 0; cardsLeft--) {
           // Check if the white card deck is empty.
           if(game.gameState.whiteCards.length === 0) {
-            game.log.push('Refilling white cards.');
+            game.log.push('Rellenando Cartas Blancas.');
             addDecks(false, true);
           }
 
           // Add card.
-          game.log.push(`Player ${player.username} Drew: ${game.gameState.whiteCards[0]}`);
+          game.log.push(`El jugador ${player.username} robó: ${game.gameState.whiteCards[0]}`);
           player.hand.push(game.gameState.whiteCards[0]);
           game.gameState.whiteCards.shift();
         }
@@ -432,22 +432,22 @@ io.on('connection', (socket) => {
       }else {
         game.gameState.czar++;
       }
-      game.log.push(`New Czar: ${game.players[game.gameState.czar].username}.`);
+      game.log.push(`Nuevo árbitro: ${game.players[game.gameState.czar].username}.`);
       game.gameState.czarReady = false;
       game.gameState.czarHasPicked = false;
       game.gameState.playedWhiteCards = [];
 
       if(game.gameState.blackCards.length === 0) {
-        game.log.push('Refilling black cards.');
+        game.log.push('Rellenando Cartas Negras.');
         addDecks(true, false);
       }
-      game.log.push(`Black Card in Play: ${game.gameState.blackCards[0].text}`);
+      game.log.push(`Carta Negra en juego: ${game.gameState.blackCards[0].text}`);
       game.gameState.blackCard = game.gameState.blackCards[0];
       game.gameState.blackCards.shift();
 
       io.sockets.emit('updatedGame', game);
       io.sockets.emit('roundStart', game.timeoutTime);
-      console.log('New round.');
+      console.log('Nueva ronda.');
     }, 3000);
   });
   socket.on('kill', () => {
@@ -455,7 +455,7 @@ io.on('connection', (socket) => {
       theSocket.disconnect();
     });
     resetGame();
-    console.log('Host killed the game.');
+    console.log('El anfitrión terminó el juego.');
   });
   socket.on('disconnect', () => {
     if(socket) {
@@ -476,7 +476,7 @@ app.get('/api/set/:set', (req, res) => {
     res.send(JSON.parse(contents));
     return;
   }
-  res.send(`Set '${req.params.set}' does not exist.`);
+  res.send(`El set '${req.params.set}' no existe.`);
 });
 app.get('/api/sets', (req, res) => {
   res.send(fs.readdirSync('src/server/sets/').map((set) => set.replace('.json', '')));
@@ -490,7 +490,7 @@ app.get('/api/randomWhiteCard/:set?', (req, res) => {
     res.send(randomOf(JSON.parse(contents).whiteCards));
     return;
   }
-  res.send(`Set '${req.params.set}' does not exist.`);
+  res.send(`El set '${req.params.set}' no existe.`);
 });
 app.get('/api/randomBlackCard/:set?', (req, res) => {
   const set = req.params.set || 'base-set';
@@ -501,5 +501,5 @@ app.get('/api/randomBlackCard/:set?', (req, res) => {
     res.send(randomOf(JSON.parse(contents).blackCards).text);
     return;
   }
-  res.send(`Set '${req.params.set}' does not exist.`);
+  res.send(`El set '${req.params.set}' no existe.`);
 });
