@@ -35,7 +35,7 @@ const styles = (theme) => ({
 
 class TheActualGame extends Component {
   render() {
-    const { classes, username, game, playCard, czarPick } = this.props;
+    const { classes, username, code, game, playCard, czarPick } = this.props;
     
     const isCzar = game.players.indexOf(game.players.find((player) => {
       return username === player.username;

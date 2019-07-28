@@ -108,7 +108,7 @@ class Game extends Component {
           !game.started
             ? <>
                 {
-                  game.players.length >= 4
+                  game.players.length >= 2
                     ? username === game.players[0].username
                       ? <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} onClick={start(this.state.timeoutTime)}>Empezar con {game.players.length} jugadores</Button>
                       : <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} disabled onClick={start}>Empezar con {game.players.length} jugadores (Sólo el anfitrión puede empezar el juego)</Button>
@@ -244,6 +244,7 @@ class Game extends Component {
               </>
             : <TheActualGame
               username={username}
+              code={code}
               game={game}
               playCard={playCard}
               czarPick={czarPick}

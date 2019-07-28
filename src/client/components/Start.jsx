@@ -31,7 +31,8 @@ class Start extends Component {
     return (
       <div id='connect-area'>
         <h1>Cartas contra la Humanidad</h1>
-        <Typography paragraph>¡Bienvenido a Cartas contra la Humanidad! Si nunca lo has oído, es un juego en el que un jugador hace una pregunta de una Carta Negra, y todo el mundo responde con sus mejores Cartas Blancas. ¡Cuánto más raro, más risas!
+        <Typography paragraph>¡Bienvenido a Cartas contra la Humanidad! Si nunca lo has oído, es un juego en el que un jugador hace una pregunta de una Carta Negra, y todo el mundo responde con sus mejores Cartas Blancas. ¡Cuánto más raro, más risas!<br/>
+        Lo hemos modificado un poco para hacerlo más divertido: pueden jugar desde 2 personas y todos son árbitros: las cartas elegidas como las mejores son las que a más gente han gustado, y en caso de empate se decidirá aleatoriamente.
         </Typography>
         <Paper className={classes.paperRoot} elevation={1}>
           <Typography variant='h5' component='h3'>

@@ -94,11 +94,16 @@ class App extends Component {
     this.setState({ username: event.target.value });
   }
 
+  handleCodeChange = (event) => {
+    this.setState({ code: event.target.value });
+  }
+
   componentDidUpdate() {
     
   }
   connectToGame = () => {
     const { username } = this.state;
+    const { code } = this.state;
 
     if(username === '' || username.length > 16) {
       this.setState({
@@ -106,6 +111,18 @@ class App extends Component {
           open: true,
           title: 'Nombre de usuario inválido',
           content: 'El nombre de usuario es inválido. El nombre de usuario no puede estar vacío y no puede pasar de los 16 caracteres.'
+        }
+      });
+      
+      return;
+    }
+
+    if(code === '' || code.length != 16) {
+      this.setState({
+        dialog: {
+          open: true,
+          title: 'Código inválido',
+          content: 'El código es inválido. El código no puede estar vacío y debe tener la longitud adecuada.'
         }
       });
       
@@ -349,6 +366,7 @@ class App extends Component {
             this.state.connected
               ? <Game
                 username={this.state.username}
+                code={this.state.code}
                 game={this.state.game}
                 disconnect={this.disconnect}
                 start={this.start}
@@ -362,7 +380,9 @@ class App extends Component {
               />
               : <Start
                 username={this.state.username}
+                code={this.state.code}
                 handleUsernameChange={this.handleUsernameChange}
+                handleCodeChange={this.handleCodeChange}
                 connect={this.connectToGame}
               />
           }

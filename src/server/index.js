@@ -5,6 +5,7 @@ import entities from 'entities';
 import { randomOf } from '@reverse/random';
 
 let game = {
+  code: generateCode(16),
   players: [],
   timeoutTime: 0,
   gameState: {
@@ -105,9 +106,19 @@ function addDecks(addBlackCards, addWhiteCards) {
 function getPlayerIndex(username) {
   return game.players.findIndex((player) => player.username === username);
 }
+function generateCode(length) {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
 function resetGame() {
   // Reset game.
   game = {
+    code: generateCode(16),
     players: [],
     gameState: {
       whiteCards: [],
