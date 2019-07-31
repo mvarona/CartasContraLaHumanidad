@@ -4,10 +4,7 @@ import fs from 'fs';
 import entities from 'entities';
 import { randomOf } from '@reverse/random';
 
-let games = [];
-
 let game = {
-  code: generateCode(16),
   players: [],
   timeoutTime: 0,
   gameState: {
@@ -27,14 +24,6 @@ let game = {
 };
 
 let timeLeftInterval;
-
-function returnGameForCode(code){
-  for (var i = 0; i < games.length; i++) {
-    if (games[i].code == code){
-      return games[i];
-    }
-  }
-}
 
 function addDecks(addBlackCards, addWhiteCards) {
   const defaultDecksToUse = game.decks.filter((deck) => deck.selected && !deck.custom).map((deck) => {
@@ -116,19 +105,9 @@ function addDecks(addBlackCards, addWhiteCards) {
 function getPlayerIndex(username) {
   return game.players.findIndex((player) => player.username === username);
 }
-function generateCode(length) {
-   var result           = '';
-   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-   }
-   return result;
-}
 function resetGame() {
   // Reset game.
   game = {
-    code: generateCode(16),
     players: [],
     gameState: {
       whiteCards: [],
@@ -211,7 +190,7 @@ io.on('connection', (socket) => {
           codeName: jsonContent.codeName,
           official: jsonContent.official,
           custom: false,
-          selected: jsonContent.codeName === 'base-set'
+          selected: jsonContent.codeName === 'CAH-es-set'
         });
       });
     }
@@ -503,7 +482,7 @@ app.get('/api/sets', (req, res) => {
   res.send(fs.readdirSync('src/server/sets/').map((set) => set.replace('.json', '')));
 });
 app.get('/api/randomWhiteCard/:set?', (req, res) => {
-  const set = req.params.set || 'base-set';
+  const set = req.params.set || 'CAH-es-set';
 
   if(fs.existsSync(`src/server/sets/${set}.json`)) {
     const contents = fs.readFileSync(`src/server/sets/${set}.json`);
@@ -514,7 +493,7 @@ app.get('/api/randomWhiteCard/:set?', (req, res) => {
   res.send(`El set '${req.params.set}' no existe.`);
 });
 app.get('/api/randomBlackCard/:set?', (req, res) => {
-  const set = req.params.set || 'base-set';
+  const set = req.params.set || 'CAH-es-set';
 
   if(fs.existsSync(`src/server/sets/${set}.json`)) {
     const contents = fs.readFileSync(`src/server/sets/${set}.json`);

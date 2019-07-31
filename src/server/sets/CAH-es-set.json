@@ -1,0 +1,19 @@
+{
+  "name": "Pack Oficial España",
+  "codeName": "CAH-es-set",
+  "official": true,
+  "blackCards": [
+    {
+      "text": "String",
+      "pick": 2
+    },
+    {
+      "text": "String",
+      "pick": 2
+    }
+  ],
+  "whiteCards": [
+    "String",
+    "String"
+  ]
+}

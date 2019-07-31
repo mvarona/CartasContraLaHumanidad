@@ -70,7 +70,6 @@ class App extends Component {
 
     this.state = {
       // Game
-      code: '',
       username: '',
       connected: false,
       allDecksSelected: false,
@@ -95,178 +94,11 @@ class App extends Component {
     this.setState({ username: event.target.value });
   }
 
-  handleCodeChange = (event) => {
-    this.setState({ code: event.target.value });
-  }
-
   componentDidUpdate() {
     
   }
   connectToGame = () => {
     const { username } = this.state;
-    const { code } = this.state;
-
-    if(username === '' || username.length > 16) {
-      this.setState({
-        dialog: {
-          open: true,
-          title: 'Nombre de usuario inválido',
-          content: 'El nombre de usuario es inválido. El nombre de usuario no puede estar vacío y no puede pasar de los 16 caracteres.'
-        }
-      });
-      
-      return;
-    }
-
-    if(code === '' || code.length != 16) {
-      this.setState({
-        dialog: {
-          open: true,
-          title: 'Código inválido',
-          content: 'El código es inválido. El código no puede estar vacío y debe tener la longitud adecuada.'
-        }
-      });
-      
-      return;
-    }
-
-    socket = connect();
-
-    connectTimeout = setTimeout(() => {
-      socket.disconnect();
-      this.setState({
-        dialog: {
-          open: true,
-          title: 'Error al conectar',
-          content: 'El cliente tarda demasiado en conectar con el servidor, puede que esté caído. Por favor, inténtalo de nuevo más tarde.'
-        }
-      });
-      
-      playSound('dialog');
-    }, 1500);
-
-    // When the client connects.
-    socket.on('connect', async() => {
-      clearTimeout(connectTimeout);
-      socket.emit('newPlayer', this.state.username);
-    });
-    // If the username already exists in the server.
-    socket.on('usernameExists', () => {
-      this.setState({
-        dialog: {
-          open: true,
-          title: 'El nombre de usuario ya existe en la sala',
-          content: 'Hay otro jugador en la sala con el mismo nombre de usuario. Por favor, inténtalo de nuevo con otro usuario o espera a que termine su partida.'
-        }
-      });
-      playSound('dialog');
-    });
-    socket.on('badCode', (content) => {
-      this.setState({
-        dialog: {
-          open: true,
-          title: 'El código de sala no es correcto',
-          content: 'No hemos encontrado una sala con ese código, puede que esté mal copiado o que la partida se haya cerrado. Por favor, comprueba el código y prueba de nuevo.'
-        }
-      });
-      playSound('dialog');
-    });
-    socket.on('badCustomDeck', (content) => {
-      this.setState({
-        dialog: {
-          open: true,
-          title: 'JSON malformado',
-          content: content
-        }
-      });
-      playSound('dialog');
-    });
-    socket.on('roundStart', (timeoutTime) => {
-      const playerIndex = this.state.game.players.findIndex((player) => this.state.username === player.username);
-      
-      if(playerIndex === 0) {
-        socket.emit('roundStart', Date.now());
-      }
-      if(playerIndex !== this.state.game.gameState.czar) {
-        playTimeout = setTimeout(() => {
-          const playerIndex = this.state.game.players.findIndex((player) => this.state.username === player.username);
-  
-          // Play cards.
-          for(let i = 0; i < this.state.game.gameState.blackCard.pick; i++) {
-            const cardToPlay = Math.floor(Math.random() * this.state.game.players[playerIndex].hand.length);
-
-            this.playCard(cardToPlay)();
-          }
-        }, timeoutTime * 1000 + 1000);
-      }
-    });
-    // New game data.
-    socket.on('updatedGame', (game) => {
-      this.setState({ game: game });
-
-      // Set state connected if not set already.
-      if(!this.state.connected) {
-        this.setState({ connected: true });
-      }
-    });
-    // When the Czar picks the winner for the round.
-    socket.on('roundWinner', (username) => {
-      this.setState({
-        snackbarOpen: true,
-        snackbarContent: `${username} gana la ronda. Siguiente ronda en 3 segundos...`
-      });
-      playSound('round-winner');
-    });
-    // When someone wins.
-    socket.on('winner', (winnerUsername, players, log) => {
-      const playerIndex = players.findIndex((player) => this.state.username === player.username);
-      
-      this.setState({
-        endGameDialog: true,
-        winner: winnerUsername,
-        clientScore: players[playerIndex].score,
-        log: log
-      });
-      socket.disconnect();
-      playSound('winner');
-    });
-    // If there isn't enough people to continue the game.
-    socket.on('gameEndNotEnoughPlayers', () => {
-      this.setState({
-        dialog: {
-          open: true,
-          title: 'No hay suficientes jugadores',
-          content: 'Por este motivo, el juego se ha cerrado.'
-        }
-      });
-      socket.disconnect();
-
-      playSound('dialog');
-    });
-    // If the server stops working.
-    socket.on('disconnect', () => {
-      this.setState({
-        connected: false,
-        game: {}
-      });
-      socket.disconnect();
-      
-      if(!this.state.usernameExistsDialog && !this.state.notEnoughPlayersDialog && !this.state.username === '') {
-        this.setState({
-          dialog: {
-            open: true,
-            title: 'Servidor desconectado',
-            content: 'Has sido desconectado del juego. Esto se puede deber a que el juego terminó, el servidor está caído o ha dejado de funcionar.'
-          }
-        });
-
-        playSound('dialog');
-      }
-    });
-  }
-  createNewGame = () => {
-    const { username } = this.state;
-    const { code } = this.state;
 
     if(username === '' || username.length > 16) {
       this.setState({
@@ -517,7 +349,6 @@ class App extends Component {
             this.state.connected
               ? <Game
                 username={this.state.username}
-                code={this.state.code}
                 game={this.state.game}
                 disconnect={this.disconnect}
                 start={this.start}
@@ -531,11 +362,8 @@ class App extends Component {
               />
               : <Start
                 username={this.state.username}
-                code={this.state.code}
                 handleUsernameChange={this.handleUsernameChange}
-                handleCodeChange={this.handleCodeChange}
                 connect={this.connectToGame}
-                create={this.createNewGame}
               />
           }
 

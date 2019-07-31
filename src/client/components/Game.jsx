@@ -126,15 +126,6 @@ class Game extends Component {
                     : <Button variant='contained' color='primary' disabled className={classes.button} style={{ marginTop: '35px' }}>Empezar ({game.players.length} de 2 jugadores)</Button>
                 }
 
-                <Typography variant='h4' style={{ marginTop: '20px' }}>Código de la sala: {game.code}&nbsp;&nbsp;&nbsp;
-                  <Fab color='primary' aria-label='Copy' onClick={this.copyCode(game.code)}>
-                    <CopyIcon />
-                  </Fab>
-                  <span id="copied" style={{ display: 'none'}}>¡Copiado!</span>
-                </Typography>
-
-                <FormHelperText>Facilita este código con los amigos con los que quieras jugar.</FormHelperText>
-                
                 <br/><br/>
 
                 {
@@ -157,8 +148,8 @@ class Game extends Component {
                     : null
                 }
 
-                <Typography variant='h4' style={{ marginTop: '20px' }}>Selecciona barajas a usar</Typography>
-                <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Alternar todas</Button>
+                <Typography variant='h4' style={{ marginTop: '20px' }}>Selecciona barajas a usar &nbsp;&nbsp;
+                <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Alternar todas</Button></Typography>
 
                 <br/><br/>
                 <Typography variant='h5'>Oficiales</Typography>
@@ -298,7 +289,7 @@ class Game extends Component {
                   <Typography variant='h4' style={{
                     textAlign: 'center',
                     marginTop: '20px'
-                  }}>Panel de Administración</Typography>
+                  }}>&nbsp;&nbsp;Panel de Administración&nbsp;&nbsp;</Typography>
                   <div className={classes.list}>
                     <List>
                       <ListItem button onClick={kill}>

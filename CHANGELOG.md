@@ -4,12 +4,9 @@ Todos los cambios destacables de este proyecto serán documentados en este archi
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y este proyecto usa [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 2.0.0 [yyyy/mm/dd]
+## 1.7.0 [2019/07/31]
 ## Added
-- API completamente nueva.
-
-## Removed
-- API de herencia dada de baja.
+- El número mínimo de jugadores ahora es 2.
 
 ## LEGACY CHANGELOG:
 
