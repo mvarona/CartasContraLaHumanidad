@@ -134,7 +134,7 @@ function removePlayer(username) {
   game.log.push(`Jugador ${username} desconectado.`);
 
   // If there is not enough people to join.
-  let minNumberOfPlayers = 2;
+  let minNumberOfPlayers = 3;
 
   if(game.players.length < minNumberOfPlayers && game.started) {
     console.log('No hay suficientes jugadores conectados. Terminando juego.');

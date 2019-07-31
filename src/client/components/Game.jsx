@@ -118,11 +118,11 @@ class Game extends Component {
           !game.started
             ? <>
                 {
-                  game.players.length >= 4
+                  game.players.length >= 3
                     ? username === game.players[0].username
                       ? <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} onClick={start(this.state.timeoutTime)}>Empezar con {game.players.length} jugadores</Button>
                       : <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} disabled onClick={start}>Empezar con {game.players.length} jugadores (Sólo el anfitrión puede empezar el juego)</Button>
-                    : <Button variant='contained' color='primary' disabled className={classes.button} style={{ marginTop: '35px' }}>Empezar ({game.players.length} de 2 jugadores)</Button>
+                    : <Button variant='contained' color='primary' disabled className={classes.button} style={{ marginTop: '35px' }}>Empezar ({game.players.length} de 3 jugadores como mínimo)</Button>
                 }
 
                 {
@@ -165,7 +165,7 @@ class Game extends Component {
                               onChange={toggleDeck(codeName)}
                               value='codeName'
                               color='primary'
-                              disabled={clientIndex !== 0 || deck.codeName === 'base-set'}
+                              disabled={clientIndex !== 0 || deck.codeName === 'CAH-es-set'}
                             />
                           }
                           label={deck.name}

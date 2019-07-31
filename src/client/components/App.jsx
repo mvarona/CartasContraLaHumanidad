@@ -238,7 +238,7 @@ class App extends Component {
   }
   toggleDeck = (deckCodeName) => () => {
     // Fail safe even though the checkbox is disabled.
-    if(deckCodeName !== 'base-set') {
+    if(deckCodeName !== 'CAH-es-set') {
       const newState = this.state.game;
       const deckArray = newState.decks;
       const deckIndex = deckArray.indexOf(deckArray.find((deck) => {
@@ -255,7 +255,7 @@ class App extends Component {
     const toggledDecks = this.state.game.decks;
 
     toggledDecks.forEach((deck, index) => {
-      if(deck.codeName !== 'base-set') {
+      if(deck.codeName !== 'CAH-es-set') {
         toggledDecks[index].selected = !this.state.allDecksSelected;
       }
     });
