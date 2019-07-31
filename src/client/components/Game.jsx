@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
-import CopyIcon from '@material-ui/icons/FileCopy';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
@@ -119,14 +118,12 @@ class Game extends Component {
           !game.started
             ? <>
                 {
-                  game.players.length >= 2
+                  game.players.length >= 4
                     ? username === game.players[0].username
                       ? <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} onClick={start(this.state.timeoutTime)}>Empezar con {game.players.length} jugadores</Button>
                       : <Button variant='contained' color='primary' className={classes.button} style={{ marginTop: '35px' }} disabled onClick={start}>Empezar con {game.players.length} jugadores (Sólo el anfitrión puede empezar el juego)</Button>
                     : <Button variant='contained' color='primary' disabled className={classes.button} style={{ marginTop: '35px' }}>Empezar ({game.players.length} de 2 jugadores)</Button>
                 }
-
-                <br/><br/>
 
                 {
                   username === game.players[0].username
@@ -148,12 +145,10 @@ class Game extends Component {
                     : null
                 }
 
-                <Typography variant='h4' style={{ marginTop: '20px' }}>Selecciona barajas a usar &nbsp;&nbsp;
-                <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Alternar todas</Button></Typography>
+                <Typography variant='h4' style={{ marginTop: '20px' }}>Selecciona barajas a usar</Typography>
+                <Button variant='outlined' color='primary' className={classes.button} onClick={toggleAllDecks} disabled={username !== game.players[0].username}>Alternar todas</Button>
 
-                <br/><br/>
                 <Typography variant='h5'>Oficiales</Typography>
-                <br/>
                 <FormGroup row>
                   {
                     decks.filter((deck) => deck.official).map((deck, index) => {
@@ -180,9 +175,7 @@ class Game extends Component {
                     })
                   }
                 </FormGroup>
-                <br/><br/>
                 <Typography variant='h5'>No oficiales</Typography>
-                <br/>
                 <Typography paragraph>A) barajas encontradas en <a href='https://crhallberg.com/cah/' target='_blank' rel='noreferrer noopener'>JSON Against Humanity</a>,
                   y B) barajas hechas por el equipo de desarrollo original, sus amigos o equipos de desarrollo posteriores.
                 </Typography>
@@ -212,9 +205,7 @@ class Game extends Component {
                     })
                   }
                 </FormGroup>
-                <br/><br/>
                 <Typography variant='h5'>Personalizadas</Typography>
-                <br/>
                 <Typography paragraph>¡Importa tus propios archivos JSON para jugar con las cartas que TÚ quieres!</Typography>
                 <FormGroup row>
                   <Button variant='outlined' color='primary' className={classes.button} disabled={clientIndex !== 0} onClick={this.openDialog}>Importar JSON</Button>
@@ -263,7 +254,6 @@ class Game extends Component {
               </>
             : <TheActualGame
               username={username}
-              code={code}
               game={game}
               playCard={playCard}
               czarPick={czarPick}
@@ -289,7 +279,7 @@ class Game extends Component {
                   <Typography variant='h4' style={{
                     textAlign: 'center',
                     marginTop: '20px'
-                  }}>&nbsp;&nbsp;Panel de Administración&nbsp;&nbsp;</Typography>
+                  }}>Panel de Administración</Typography>
                   <div className={classes.list}>
                     <List>
                       <ListItem button onClick={kill}>
