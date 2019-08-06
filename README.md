@@ -1,13 +1,11 @@
 ## Juego
 ¡Bienvenido a Cartas contra la Humanidad! ¡Ahora por fin en español! O castellano. Bueno, ya tu sabe.
 
-// TODO: Include production URL
-
-Puedes jugarlo en !!!URL!!!.
+Puedes jugarlo en [cartascontralahumanidad.es](http://cartascontralahumanidad.es)
 
 ***
 
-// TODO: Include promo GIFS
+![Gif introductorio](https://bmsalamanca.com/others/cartascontralahumanidad/hero.gif)
 
 ***
 
