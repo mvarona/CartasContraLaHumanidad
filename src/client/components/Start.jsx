@@ -34,11 +34,6 @@ class Start extends Component {
         <Typography paragraph>¡Bienvenido a Cartas contra la Humanidad! Si nunca lo has oído, es un juego en el que un jugador hace una pregunta de una Carta Negra, y todo el mundo responde con sus mejores Cartas Blancas. ¡Cuánto más raro, más risas!<br/><br/>
         ¡Lo hemos modificado un poco para hacerlo más divertido: pueden jugar desde 3 personas!
         </Typography>
-
-        <p align="center">
-          <img alt="Gif introductorio" src="https://bmsalamanca.com/others/cartascontralahumanidad/hero.gif">
-        </p>
-
         <Paper className={classes.paperRoot} elevation={1}>
           <Typography variant='h5' component='h3'>
             Crea una partida o únete a la actual
