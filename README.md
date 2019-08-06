@@ -5,7 +5,9 @@ Puedes jugarlo en [cartascontralahumanidad.es](http://cartascontralahumanidad.es
 
 ***
 
-![Gif introductorio](https://bmsalamanca.com/others/cartascontralahumanidad/hero.gif)
+<p align="center">
+  <img alt="Gif introductorio" src="https://bmsalamanca.com/others/cartascontralahumanidad/hero.gif">
+</p>
 
 ***
 
