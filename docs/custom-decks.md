@@ -35,13 +35,12 @@ Un ejemplo de añadir cartas negras quedaría así:
   "blackCards": [
     {
       // Sin usar huecos:
-      // TODO: Comprobar si sobran las entidades para tildes, ¿ y ¡:
-      "text": "&#191; Por qu&eacute; cruz&oacute; la gallina la carretera?",
+      "text": "&iquest; Por qu&eacute; cruz&oacute; la gallina la carretera?",
       "pick": 1
     },
     {
       // Usando huecos y entidades de caracteres:
-      "text": "&#191;Te gusta _? &#161;Bueno, _&trade; es mejor!",
+      "text": "&iexcl;Te gusta _&quest; &#161;Bueno, _&trade; es mejor&excl;",
       "pick": 2
     }
   ]
@@ -52,13 +51,12 @@ Un ejemplo de añadir cartas negras quedaría así:
 Las cartas blancas son las más sencillas. Necesitas añadir un array con la clave `whiteCards`, y cada elemento del array debe ser una cadena.
 
 Un ejemplo de añadir tarjetas blancas sería:
-// TODO: Revisar si se puede poner tildes en las WhiteCards:
 ```json
 {
   "name": "Baraja Personalizada #1",
   "codeName": "mi-baraja-1",
   "whiteCards": [
-    "Si",
+    "S&iacute;",
     "No",
     "Puede"
   ]

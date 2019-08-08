@@ -31,6 +31,7 @@ class Start extends Component {
     return (
       <div id='connect-area'>
         <h1>Cartas contra la Humanidad</h1>
+        <img className="hero" alt="Introduction gif" src="https://www.bmsalamanca.com/others/cartascontralahumanidad/hero.gif"/>
         <Typography paragraph>¡Bienvenido a Cartas contra la Humanidad! Si nunca lo has oído, es un juego en el que un jugador hace una pregunta de una Carta Negra, y todo el mundo responde con sus mejores Cartas Blancas. ¡Cuánto más raro, más risas!<br/><br/>
         ¡Lo hemos modificado un poco para hacerlo más divertido: pueden jugar desde 3 personas!
         </Typography>
@@ -56,7 +57,7 @@ class Start extends Component {
           <br/>
           <Typography paragraph>¿Quieres que tu baraja personalizada esté en el juego? ¡Las contribuciones son bienvenidas!
           <br/>
-          Lee la documentación en <a href='https://cards-against-humanity.netlify.com/#/custom-decks' target='_blank' rel='noreferrer noopener'>https://cards-against-humanity.netlify.com/#/custom-decks</a>, abre un issue de Github en <a href='https://github.com/mvarona/CartasContraLaHumanidad/issues' target='_blank' rel='noreferrer noopener'>https://github.com/mvarona/CartasContraLaHumanidad/issues</a> y lo revisaremos.</Typography>
+          Lee la documentación en <a href='https://github.com/mvarona/CartasContraLaHumanidad/tree/master/docs' target='_blank' rel='noreferrer noopener'>https://github.com/mvarona/CartasContraLaHumanidad/tree/master/docs</a>, abre un issue de Github en <a href='https://github.com/mvarona/CartasContraLaHumanidad/issues' target='_blank' rel='noreferrer noopener'>https://github.com/mvarona/CartasContraLaHumanidad/issues</a> y lo revisaremos.</Typography>
         </Paper>
         <Paper className={classes.paperRoot}>
           <Typography variant='h5'>Una adaptación de </Typography>

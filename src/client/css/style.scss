@@ -20,6 +20,20 @@ body {
     }
 }
 
+img.hero {
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width: 25%;
+  float: left;
+  margin-right: 3%;
+}
+
+a {
+  word-wrap: break-word;
+}
+
 #copied {
     animation-name: opacityOnAndOff;
     animation-duration: 6000ms;
