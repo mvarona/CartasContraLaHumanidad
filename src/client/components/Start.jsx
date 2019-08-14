@@ -65,7 +65,10 @@ class Start extends Component {
           <br/>
           <Typography paragraph><a href='https://github.com/SergioPucela' target='_blank' rel='noreferrer noopener'>Sergio Ferreras</a> y <a href='https://github.com/mvarona/' target='_blank' rel='noreferrer noopener'>Mario Varona</a>.</Typography>
         </Paper>
-        
+        <AdSense.Google
+          client='ca-pub-2745395949562511'
+          slot='7806394673'
+        />
       </div>
     );
   }
