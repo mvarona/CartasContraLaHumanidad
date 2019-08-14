@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import AdSense from 'react-adsense';
 
 const styles = (theme) => ({
   paperRoot: {
@@ -64,6 +65,7 @@ class Start extends Component {
           <br/>
           <Typography paragraph><a href='https://github.com/SergioPucela' target='_blank' rel='noreferrer noopener'>Sergio Ferreras</a> y <a href='https://github.com/mvarona/' target='_blank' rel='noreferrer noopener'>Mario Varona</a>.</Typography>
         </Paper>
+        
       </div>
     );
   }

@@ -19,6 +19,7 @@
     "fullstack-system": "^2.2.2",
     "interweave": "^11.1.0",
     "react": "^16.8.6",
+    "react-adsense": "^0.1.0",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.11.1",
     "react-transition-group": "^4.1.1"
