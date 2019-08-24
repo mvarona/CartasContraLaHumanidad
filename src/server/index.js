@@ -503,3 +503,6 @@ app.get('/api/randomBlackCard/:set?', (req, res) => {
   }
   res.send(`El set '${req.params.set}' no existe.`);
 });
+
+var express = require('express');
+app.use(express.static('public'));
