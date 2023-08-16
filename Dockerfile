@@ -16,6 +16,5 @@ RUN npm ci --omit=dev
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
-CMD [ "npm", "build" ]
-CMD [ "node", "src/server/index.js" ]
+EXPOSE 8000
+ENTRYPOINT npm run start
