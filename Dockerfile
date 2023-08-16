@@ -18,4 +18,4 @@ COPY . .
 
 EXPOSE 8080
 CMD [ "npm", "build" ]
-CMD [ "npm", "run", "production" ]
+CMD [ "node", "src/server/index.js" ]
