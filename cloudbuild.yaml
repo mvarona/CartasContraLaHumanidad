@@ -1,4 +1,5 @@
 steps:
-- name: node:14.17.0
-  entrypoint: npm
-  args: ['install']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/cartascontralahumanidad/1.0', '.' ]
+images:
+- 'gcr.io/cartascontralahumanidad/1.0'
