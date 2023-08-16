@@ -17,4 +17,4 @@ RUN npm ci --omit=dev
 COPY . .
 
 EXPOSE 8080
-CMD [ "node", "scripts/build.js" ]
+CMD [ "npm", "run", production" ]
