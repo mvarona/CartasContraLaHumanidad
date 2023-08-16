@@ -16,6 +16,6 @@ RUN npm ci --omit=dev
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE $PORT
 CMD [ "npm", "build" ]
 CMD [ "npm", "run", "production" ]
