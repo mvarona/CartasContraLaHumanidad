@@ -17,7 +17,7 @@
     "@reverse/random": "^1.0.1",
     "entities": "^1.1.2",
     "express": "^4.17.1",
-    "fullstack-system": "^2.2.2",
+    "fullstack-system": "^2.8.2",
     "interweave": "^11.1.0",
     "react": "^16.8.6",
     "react-adsense": "^0.1.0",
