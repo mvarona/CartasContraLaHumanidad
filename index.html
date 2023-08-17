@@ -105,33 +105,11 @@
 
       <a href="#" id="open_preferences_center" style="bottom: 0; position: absolute; margin-left: 50%; margin-right: 50%; width: 150px; ">Actualizar cookies</a>
 
-    <div id="root" style="width: 87%;margin-left: auto;margin-right: 0;float: right;"></div>
-    <!-- Quantcast Tag -->
       <script type="text/javascript">
-      window._qevents = window._qevents || [];
-
-      (function() {
-      var elem = document.createElement('script');
-      elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-      elem.async = true;
-      elem.type = "text/javascript";
-      var scpt = document.getElementsByTagName('script')[0];
-      scpt.parentNode.insertBefore(elem, scpt);
-      })();
-
-      window._qevents.push({
-      qacct:"p-null",
-      uid:"__INSERT_EMAIL_HERE__"
-      });
-    </script>
-
-    <noscript>
-    <div style="display:none;">
-    <img src="//pixel.quantserve.com/pixel/p-null.gif" border="0" height="1" width="1" alt="Quantcast"/>
-    </div>
-    </noscript>
-    <!-- End Quantcast tag -->
-    <div id="41959-20"><script src="//ads.themoneytizer.com/s/gen.js?type=20"></script><script src="//ads.themoneytizer.com/s/requestform.js?siteId=41959&formatId=20"></script></div>
-    <div id="41959-28"><script src="//ads.themoneytizer.com/s/gen.js?type=28"></script><script src="//ads.themoneytizer.com/s/requestform.js?siteId=41959&formatId=28"></script></div>
+        document.querySelector('.cc-nb-okagree').on("click", function() {
+          location.reload();
+        });
+      </script>
+    <div id="root" style="width: 87%;margin-left: auto;margin-right: 0;float: right;"></div>
  </body>
 </html>
