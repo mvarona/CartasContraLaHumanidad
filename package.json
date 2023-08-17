@@ -16,7 +16,7 @@
     "@material-ui/icons": "^4.2.1",
     "@reverse/random": "^1.0.1",
     "entities": "^1.1.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fullstack-system": "^2.2.2",
     "interweave": "^11.1.0",
     "react": "^16.8.6",
