@@ -106,9 +106,7 @@
       <a href="#" id="open_preferences_center" style="bottom: 0; position: absolute; margin-left: 50%; margin-right: 50%; width: 150px; ">Actualizar cookies</a>
 
       <script type="text/javascript">
-        document.querySelector('.cc-nb-okagree').on("click", function() {
-          location.reload();
-        });
+        document.querySelector('.cc-nb-okagree').onclick = function() {location.reload();};
       </script>
     <div id="root" style="width: 87%;margin-left: auto;margin-right: 0;float: right;"></div>
  </body>
