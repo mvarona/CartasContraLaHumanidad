@@ -64,6 +64,8 @@ class Start extends Component {
           <Typography variant='h5'>Una adaptación de </Typography>
           <br/>
           <Typography paragraph><a href='https://github.com/SergioPucela' target='_blank' rel='noreferrer noopener'>Sergio Ferreras</a> y <a href='https://github.com/mvarona/' target='_blank' rel='noreferrer noopener'>Mario Varona</a>.</Typography>
+          <br/>
+          <Typography paragraph>¿Te gusta el proyecto y quieres ayudarnos a mantenerlo? <a href='https://www.buymeacoffee.com/SergioFerrerasMarioVarona' target='_blank' rel='noreferrer noopener'>¡Danos café para que lo convirtamos en código!</a></Typography>
         </Paper>
         <AdSense.Google
           client='ca-pub-2745395949562511'
