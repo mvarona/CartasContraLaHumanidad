@@ -16,5 +16,5 @@ RUN npm ci --omit=dev
 # Bundle app source
 COPY . .
 
-EXPOSE 443
+EXPOSE 80
 ENTRYPOINT npm run start
