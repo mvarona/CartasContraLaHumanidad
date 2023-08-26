@@ -16,5 +16,5 @@ RUN npm ci --omit=dev
 # Bundle app source
 COPY . .
 
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT npm run start
