@@ -30,7 +30,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
-    "css-loader": "^3.0.0",
+    "css-loader": "^6.8.1",
     "eslint": "^6.0.1",
     "eslint-plugin-react": "^7.14.2",
     "file-loader": "^4.0.0",
